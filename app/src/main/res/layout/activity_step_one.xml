@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".StepOneActivity">
+
+    <ImageView
+        android:id="@+id/imageViewWelcomeLogo"
+        android:layout_width="293dp"
+        android:layout_height="324dp"
+        android:layout_marginTop="350dp"
+        android:layout_marginBottom="57dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/welcome_logo"
+        android:contentDescription="@string/welcome_logo" />
+
+    <ImageView
+        android:id="@+id/imageViewNext"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="41dp"
+        android:contentDescription="@string/next_imageview"
+        android:onClick="onClickNext"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewWelcomeLogo"
+        app:srcCompat="@drawable/btn_next_img" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

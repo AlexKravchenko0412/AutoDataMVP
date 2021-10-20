@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Auto Data</string>
+    <string name="login_hint">введите логин</string>
+    <string name="password_hint">введите пароль</string>
+    <string name="btn_enter">Войти</string>
+    <string name="enter_all_fields">Заполните все поля</string>
+    <string name="password">пароль</string>
+    <string name="login">логин</string>
+    <string name="auto_data_logo">АвтоData логотип</string>
+    <string name="welcome_logo">Шаг 1 логотип</string>
+    <string name="next_imageview">Кнопка далее</string>
+    <string name="step_two_logo">Шаг 2 логотип</string>
+    <string name="step_three_logo">Шаг 3 логотип</string>
+    <string name="btn_start">Начать</string>
+
+</resources>
