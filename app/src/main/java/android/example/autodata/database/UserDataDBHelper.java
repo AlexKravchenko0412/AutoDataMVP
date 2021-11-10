@@ -1,9 +1,9 @@
-package android.example.autodata;
+package android.example.autodata.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
+import android.example.autodata.database.UserContract;
 
 
 public class UserDataDBHelper extends SQLiteOpenHelper {

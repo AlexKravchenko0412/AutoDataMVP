@@ -1,4 +1,4 @@
-package android.example.autodata;
+package android.example.autodata.database;
 
 import android.provider.BaseColumns;
 

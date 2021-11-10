@@ -1,8 +1,10 @@
-package android.example.autodata;
+package android.example.autodata.login;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.example.autodata.database.UserContract;
+import android.example.autodata.database.UserDataDBHelper;
 
 public class LoginRepository implements LoginContract.LoginRepository {
 

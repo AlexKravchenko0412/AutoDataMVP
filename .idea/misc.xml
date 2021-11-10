@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/MyProjects/AD/app/src/main/res/layout/activity_car.xml" value="0.22" />
         <entry key="..\:/MyProjects/AD/app/src/main/res/layout/activity_main.xml" value="0.17" />
+        <entry key="..\:/MyProjects/AD/app/src/main/res/layout/activity_settings.xml" value="0.22" />
+        <entry key="..\:/MyProjects/AD/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.1921875" />
         <entry key="..\:/MyProjects/AutoData/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/MyProjects/AutoData1/app/src/main/res/layout/activity_main.xml" value="0.18" />
         <entry key="..\:/Users/User/AndroidStudioProjects/AutoData/app/src/main/res/layout/activity_auto_data_welcome.xml" value="0.67" />

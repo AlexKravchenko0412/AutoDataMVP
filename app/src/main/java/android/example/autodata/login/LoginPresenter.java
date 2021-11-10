@@ -1,11 +1,12 @@
-package android.example.autodata;
+package android.example.autodata.login;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.example.autodata.R;
+import android.example.autodata.StepOneActivity;
+import android.example.autodata.database.UserContract;
 import android.util.Log;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -27,7 +28,7 @@ public class LoginPresenter implements LoginContract.LoginPresenter {
         EditText editTextPassword = mView.findViewById(R.id.editTextPassword);
         String password = editTextPassword.getText().toString().trim();
         if(!login.isEmpty() && !password.isEmpty()) {
-            Intent intent = new Intent(mView,StepOneActivity.class);
+            Intent intent = new Intent(mView, StepOneActivity.class);
             mView.startActivity(intent);
         } else {
             Toast.makeText(mView,

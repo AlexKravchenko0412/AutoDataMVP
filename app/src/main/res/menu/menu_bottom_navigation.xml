@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_auto"
+        android:icon="@drawable/auto_img"
+        android:title="@string/auto_menu"
+        />
+    <item
+        android:id="@+id/action_stock"
+        android:icon="@drawable/stock_img"
+        android:title="@string/stock_menu"
+        />
+    <item
+        android:id="@+id/action_offers"
+        android:icon="@drawable/offers_img"
+        android:title="@string/offers_menu"
+        />
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/settings_img"
+        android:title="@string/settings_menu"
+       />
+</menu>

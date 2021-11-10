@@ -1,0 +1,24 @@
+[
+  {
+    "id":"1",
+    "name":"Alex",
+    "email":"qwerty@gmail.com"
+  },
+
+  {
+    "id":"2",
+    "name":"Nicolai",
+    "email":"123qwert@gmail.com"
+  },
+
+  {
+    "id":"3",
+    "name":"Boris",
+    "email":"rty@gmail.com"
+  },
+  {
+    "id":"4",
+    "name":"Dmitri",
+    "email":"ry@gmail.com"
+  }
+]
