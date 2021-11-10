@@ -6,6 +6,8 @@ import android.example.autodata.R;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -20,17 +22,21 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CarActivity extends AppCompatActivity {
 
-    private TextView textViewTest;
+    //private TextView textViewTest;
+    private ListView listViewTest;
     private final String DATA_URL = "http://api.openweathermap.org/data/2.5/weather?q=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0&appid=b79154bedd2aaa19f1dc0963dc255087";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car);
-        textViewTest = findViewById(R.id.textViewTest);
+        //textViewTest = findViewById(R.id.textViewTest);
+        listViewTest = findViewById(R.id.listViewTest);
         DownloadDataTask downloadDataTask = new DownloadDataTask();
         downloadDataTask.execute(DATA_URL);
     }
@@ -72,13 +78,20 @@ public class CarActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             try {
+                List<String> items = new ArrayList<>();
                 JSONObject jsonObject = new JSONObject(s);
                 String city = jsonObject.getString("name");
                 String temp = jsonObject.getJSONObject("main").getString("temp");
                 String description = jsonObject.getJSONArray("weather").getJSONObject(0).
                         getString("description");
-                String weather = String.format("%s\nTemp: %s\n%s", city, temp, description);
-                textViewTest.setText(weather);
+                items.add(city);
+                items.add(temp);
+                items.add(description);
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
+                        android.R.layout.simple_list_item_1, items);
+                listViewTest.setAdapter(adapter);
+                //String weather = String.format("%s\nTemp: %s\n%s", city, temp, description);
+                //textViewTest.setText(weather);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
