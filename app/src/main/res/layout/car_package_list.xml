@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
-        android:contentDescription="@string/package_car_img"
+        android:contentDescription="@string/data_car_package"
         tools:ignore="ImageContrastCheck"
         tools:srcCompat="@tools:sample/avatars" />
 
@@ -26,14 +26,18 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
             android:text="@string/data_package"
-            android:textSize="20sp"></TextView>
+            android:textSize="20sp">
+
+        </TextView>
 
         <TextView
             android:id="@+id/tvParams"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/number_of_params"
-            android:textSize="15sp"></TextView>
+            android:textSize="15sp">
+
+        </TextView>
 
     </LinearLayout>
 </LinearLayout>
