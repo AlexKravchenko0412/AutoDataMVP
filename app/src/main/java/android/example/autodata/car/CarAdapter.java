@@ -17,11 +17,12 @@ import java.util.List;
 public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder> {
 
     private final LayoutInflater inflater;
-    private final List<CarDataPackage> carPackages;
+    // private final List<CarDataPackage> carPackages;
+    private CarDataModel dataModel = null;
 
-    CarAdapter(Context context, List<CarDataPackage> carPackages) {
-        this.carPackages = carPackages;
+    CarAdapter(Context context) {
         this.inflater = LayoutInflater.from(context);
+        dataModel = new CarDataModel(this);
     }
 
 
@@ -33,16 +34,23 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(CarAdapter.ViewHolder holder, int position) {
-        CarDataPackage carPackage = carPackages.get(position);
+        CarDataPackage carPackage = dataModel.getDataItem(position);
         holder.packageImg.setImageResource(carPackage.getPackageImg());
         holder.dataPackageName.setText(carPackage.getParamName());
         holder.params.setText(carPackage.getNumberOfParam());
     }
 
     @Override
-    public int getItemCount() {
-        return carPackages.size();
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        dataModel.onLoadCarData();
     }
+
+    @Override
+    public int getItemCount() {
+
+        return dataModel.getSize();
+    }
+
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         final ImageView packageImg;
