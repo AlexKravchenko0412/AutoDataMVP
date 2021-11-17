@@ -1,10 +1,15 @@
 package android.example.autodata.car;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.example.autodata.R;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,17 +19,30 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AutoActivity extends AppCompatActivity {
 
     private final String DATA_URL = "https://api.openweathermap.org/data/2.5/weather?q=Санкт-Петербург&appid=b47d1fe9f6c8abcc2c5ced5c59413e6d";
 
+   // ArrayList<CarDataPackage> dataPackage = new ArrayList<>();
+   List<CarDataPackage> items = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auto);
+
+        DownloadData downloadData = new DownloadData();
+        downloadData.execute(DATA_URL);
+        RecyclerView recyclerView = findViewById(R.id.recViewCar);
+        CarAdapter carAdapter = new CarAdapter(this,items);
+        recyclerView.setAdapter(carAdapter);
+
     }
-    private class DownloadDataTask extends AsyncTask<String, Void, String> {
+
+
+    private class DownloadData extends AsyncTask<String, Void, String> {
 
         @Override
         protected String doInBackground(String... strings) {
@@ -57,5 +75,34 @@ public class AutoActivity extends AppCompatActivity {
             return null;
         }
 
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            try {
+
+                if (s != null) {
+                    JSONObject jsonObject = new JSONObject(s);
+                    String city = jsonObject.getString("name");
+                    String temp = jsonObject.getJSONObject("main").getString("temp");
+                    String description = jsonObject.getJSONArray("weather").getJSONObject(0).
+                            getString("description");
+                    items.add(new CarDataPackage(city, city, R.drawable.warning_img));
+                    items.add(new CarDataPackage(temp, temp, R.drawable.warning_img));
+                    items.add(new CarDataPackage(description, description, R.drawable.warning_img));
+                    //ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
+                     //       android.R.layout.simple_list_item_1, items);
+                    //listViewTest.setAdapter(adapter);
+
+                    //String weather = String.format("%s\nTemp: %s\n%s", city, temp, description);
+                    //textViewTest.setText(weather);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+    }
 
 }
