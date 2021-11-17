@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="android.example.autodata" >
-    <uses-permission android:name="android.permission.INTERNET"/>
+    package="android.example.autodata">
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -9,7 +10,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AutoData" >
+        android:theme="@style/Theme.AutoData">
+        <activity
+            android:name=".car.AutoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".stock.StockActivity"
+            android:exported="true" />
         <activity
             android:name=".car.CarActivity"
             android:exported="false" />
@@ -27,7 +34,7 @@
             android:exported="true" />
         <activity
             android:name=".login.LoginActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

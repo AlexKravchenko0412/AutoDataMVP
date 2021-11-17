@@ -19,5 +19,11 @@
     <string name="settings_menu">Настройки</string>
     <string name="no_odb_adapter">Не подключен ODB-адаптер</string>
     <string name="menu_car">Автомобиль</string>
+    <string name="stock_data_image">Логотип набора данных в разделе Биржа</string>
+    <string name="stock_drive">Поездка</string>
+    <string name="packages_all_period">Пакетов за весь период</string>
+    <string name="package_car_img">Изображение набора параметров в разделе Автомобиль</string>
+    <string name="data_package">Набор параметров</string>
+    <string name="number_of_params">Параметров:</string>
 
 </resources>

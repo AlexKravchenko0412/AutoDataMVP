@@ -42,7 +42,10 @@ tools:context=".car.CarActivity">
         app:layout_constraintBottom_toTopOf="@id/bottomNavViewMenu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewCar" />
+        app:layout_constraintTop_toBottomOf="@id/textViewCar" >
+
+
+    </ListView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
