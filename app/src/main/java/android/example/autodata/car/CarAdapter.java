@@ -17,7 +17,6 @@ import java.util.List;
 public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder> {
 
     private final LayoutInflater inflater;
-    // private final List<CarDataPackage> carPackages;
     private CarDataModel dataModel = null;
 
     CarAdapter(Context context) {

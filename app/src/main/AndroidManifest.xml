@@ -18,9 +18,6 @@
             android:name=".stock.StockActivity"
             android:exported="true" />
         <activity
-            android:name=".car.CarActivity"
-            android:exported="false" />
-        <activity
             android:name=".settings.SettingsActivity"
             android:exported="false" />
         <activity

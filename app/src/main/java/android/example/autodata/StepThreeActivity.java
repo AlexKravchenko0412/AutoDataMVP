@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.example.autodata.car.AutoActivity;
-import android.example.autodata.car.CarActivity;
 import android.os.Bundle;
 import android.view.View;
 
