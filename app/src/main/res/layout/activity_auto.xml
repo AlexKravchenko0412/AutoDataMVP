@@ -6,6 +6,35 @@
     android:layout_height="match_parent"
     tools:context=".car.AutoActivity">
 
+
+    <TextView
+        android:id="@+id/textViewCar"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:gravity="center"
+        android:text="@string/menu_car"
+        android:textColor="@color/black"
+        android:textSize="19sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavViewMenu"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="619dp"
+        app:backgroundTint="@color/bottom_blue"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCar"
+        app:menu="@menu/menu_bottom_navigation" />
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recViewCar"
         android:layout_width="0dp"
@@ -16,5 +45,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewCar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

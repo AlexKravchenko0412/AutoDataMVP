@@ -5,6 +5,7 @@
         android:id="@+id/action_auto"
         android:icon="@drawable/auto_img"
         android:title="@string/auto_menu"
+
         />
     <item
         android:id="@+id/action_stock"
