@@ -6,11 +6,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.example.autodata.OfferActivity;
 import android.example.autodata.R;
+import android.example.autodata.stock.StockActivity;
 import android.example.autodata.settings.SettingsActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -60,6 +61,13 @@ public class AutoActivity extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
                         startActivity(intent);
                         break;
+                    case R.id.action_stock:
+                        Intent stockIntent = new Intent(getApplicationContext(), StockActivity.class);
+                        startActivity(stockIntent);
+                        break;
+                    case R.id.action_offers:
+                        Intent offerIntent = new Intent(getApplicationContext(), OfferActivity.class);
+                        startActivity(offerIntent);
                 }
                 return false;
             }
