@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".car.AutoActivity">
-
+    tools:context=".car.datasets.DataSetActivity">
 
     <TextView
         android:id="@+id/textViewDataSetName"
         android:layout_width="0dp"
         android:layout_height="56dp"
         android:gravity="center"
-        android:text="@string/menu_car"
+        android:text="@string/dataset_name"
         android:textColor="@color/black"
         android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,28 +33,15 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewDataSetName"
         app:menu="@menu/menu_bottom_navigation" />
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recViewCar"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-
-
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewDataParams"/>
-
-    <TextView
-        android:id="@+id/textViewDataParams"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/data_params"
-        app:layout_constraintBottom_toTopOf="@+id/recViewCar"
+    <Button
+        android:id="@+id/buttonAccept"
+        android:layout_width="296dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/button_accept"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavViewMenu"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDataSetName" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

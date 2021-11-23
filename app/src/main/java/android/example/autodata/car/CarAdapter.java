@@ -19,7 +19,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder> {
     private final LayoutInflater inflater;
     private CarDataModel dataModel = null;
 
-    CarAdapter(Context context) {
+    CarAdapter(Context context) {                //What privacy should be there??????
         this.inflater = LayoutInflater.from(context);
         dataModel = new CarDataModel(this);
     }
