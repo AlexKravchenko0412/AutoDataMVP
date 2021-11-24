@@ -33,7 +33,14 @@ public class AutoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auto);
         RecyclerView recyclerView = findViewById(R.id.recViewCar);
-        CarAdapter carAdapter = new CarAdapter(this);
+        CarAdapter.OnCarDataClickListener carDataClickListener = new CarAdapter.OnCarDataClickListener() {
+            @Override
+            public void OnCarDataClick(CarDataPackage carDataModel, int position) {
+                Intent intent = new Intent(getApplicationContext(), CarDataPackage.class);
+                startActivity(intent);
+            }
+        };
+        CarAdapter carAdapter = new CarAdapter(this, carDataClickListener);
         recyclerView.setAdapter(carAdapter);
 
         auto = findViewById(R.drawable.auto_img);

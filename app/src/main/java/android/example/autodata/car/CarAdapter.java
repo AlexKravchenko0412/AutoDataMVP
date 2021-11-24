@@ -16,11 +16,18 @@ import java.util.List;
 
 public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder> {
 
+    interface OnCarDataClickListener {
+        void OnCarDataClick(CarDataPackage carDataModel, int position);
+    }
+
+    private OnCarDataClickListener onClickListener;
     private final LayoutInflater inflater;
     private CarDataModel dataModel = null;
 
-    CarAdapter(Context context) {                //What privacy should be there??????
+
+    CarAdapter(Context context, OnCarDataClickListener onClickListener) {                        //What privacy should be there??????
         this.inflater = LayoutInflater.from(context);
+        this.onClickListener = onClickListener;
         dataModel = new CarDataModel(this);
     }
 
@@ -37,6 +44,13 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder> {
         holder.packageImg.setImageResource(carPackage.getPackageImg());
         holder.dataPackageName.setText(carPackage.getParamName());
         holder.params.setText(carPackage.getNumberOfParam());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickListener.OnCarDataClick(carPackage, position);
+            }
+        });
     }
 
     @Override
