@@ -25,5 +25,7 @@
     <string name="data_params">Наборы параметров</string>
     <string name="dataset_name">Название набора параметров</string>
     <string name="button_accept">Применить</string>
+    <string name="data_set">Набор параметров навигации</string>
+    <string name="data_transfer_status">Статус передачи данных</string>
 
 </resources>
