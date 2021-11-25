@@ -27,5 +27,13 @@
     <string name="button_accept">Применить</string>
     <string name="data_set">Набор параметров навигации</string>
     <string name="data_transfer_status">Статус передачи данных</string>
+    <string name="composition_dataset">Состав набора параметров:</string>
+    <string name="dataset_compos_img_description">Изображение состава набора параметров</string>
+    <string name="dataset_status_red">Изображение статуса передачи данных - красный</string>
+    <string name="data_sell_variants">Варианты продажи данных:</string>
+    <string name="data_sell_variants_img">Изображение вариантов продажи</string>
+    <string name="dataset_price">Стоимость пакета:</string>
+    <string name="dataset_term">Срок передачи данных:</string>
+    <string name="dataset_term_img">Изображение срока передачи данных</string>
 
 </resources>

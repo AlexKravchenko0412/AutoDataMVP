@@ -94,7 +94,83 @@
         app:layout_constraintStart_toEndOf="@+id/textViewStatus"
         app:layout_constraintTop_toTopOf="@+id/textViewStatus"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/status_red_img" />
+        app:srcCompat="@drawable/status_red_img"
+        android:contentDescription="@string/dataset_status_red" />
+
+    <TextView
+        android:id="@+id/tvCompositionDataset"
+        android:layout_width="241dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="45dp"
+        android:text="@string/composition_dataset"
+        app:layout_constraintEnd_toStartOf="@+id/ivCompositionDataset"
+        app:layout_constraintStart_toStartOf="@+id/imageViewDataSet"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewDataSet" />
+
+    <ImageView
+        android:id="@+id/ivCompositionDataset"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="69dp"
+        android:onClick="DataSetShow"
+        app:layout_constraintBottom_toBottomOf="@+id/tvCompositionDataset"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvCompositionDataset"
+        app:srcCompat="@drawable/dataset_img"
+        android:contentDescription="@string/dataset_compos_img_description" />
+
+    <TextView
+        android:id="@+id/tvDataSellVariants"
+        android:layout_width="241dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/data_sell_variants"
+        app:layout_constraintEnd_toEndOf="@+id/tvCompositionDataset"
+        app:layout_constraintStart_toStartOf="@+id/tvCompositionDataset"
+        app:layout_constraintTop_toBottomOf="@+id/tvCompositionDataset" />
+
+    <ImageView
+        android:id="@+id/ivDataSellVariants"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvDataSellVariants"
+        app:layout_constraintEnd_toEndOf="@+id/ivCompositionDataset"
+        app:layout_constraintStart_toStartOf="@+id/ivCompositionDataset"
+        app:layout_constraintTop_toTopOf="@+id/tvDataSellVariants"
+        app:srcCompat="@drawable/sell_vaiants_img"
+        android:contentDescription="@string/data_sell_variants_img" />
+
+    <TextView
+        android:id="@+id/textViewDataSetPrice"
+        android:layout_width="241dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/dataset_price"
+        app:layout_constraintEnd_toEndOf="@+id/tvDataSellVariants"
+        app:layout_constraintStart_toStartOf="@+id/tvDataSellVariants"
+        app:layout_constraintTop_toBottomOf="@+id/tvDataSellVariants" />
+
+    <TextView
+        android:id="@+id/tvDatasetTerm"
+        android:layout_width="241dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/dataset_term"
+        app:layout_constraintEnd_toEndOf="@+id/textViewDataSetPrice"
+        app:layout_constraintStart_toStartOf="@+id/textViewDataSetPrice"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDataSetPrice" />
+
+    <ImageView
+        android:id="@+id/imageViewTerm"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvDatasetTerm"
+        app:layout_constraintEnd_toEndOf="@+id/ivDataSellVariants"
+        app:layout_constraintStart_toStartOf="@+id/ivDataSellVariants"
+        app:layout_constraintTop_toTopOf="@+id/tvDatasetTerm"
+        app:srcCompat="@drawable/term_img"
+        android:contentDescription="@string/dataset_term_img" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
