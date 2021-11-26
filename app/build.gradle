@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application'
+        id 'com.android.application'
 }
 
 android {
@@ -35,4 +35,6 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.TestAuto.ext:junit:1.1.3'
     androidTestImplementation 'androidx.TestAuto.espresso:espresso-core:3.4.0'
+    implementation 'com.google.android.material:1.2.0-alpha-02'
+
 }

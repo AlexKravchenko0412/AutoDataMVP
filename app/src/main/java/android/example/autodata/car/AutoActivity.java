@@ -49,6 +49,7 @@ public class AutoActivity extends AppCompatActivity {
         offer = findViewById(R.drawable.offers_img);
         settings = findViewById(R.drawable.settings_img);
 
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavViewMenu);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
