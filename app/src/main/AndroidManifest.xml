@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AutoData">
         <activity
+            android:name=".car.datasets.DataSetCompositionActivity"
+            android:exported="false" />
+        <activity
             android:name=".car.datasets.DataSetActivity"
             android:exported="false" />
         <activity

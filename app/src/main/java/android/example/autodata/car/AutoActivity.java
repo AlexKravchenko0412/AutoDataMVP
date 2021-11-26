@@ -37,6 +37,7 @@ public class AutoActivity extends AppCompatActivity {
             @Override
             public void OnCarDataClick(CarDataPackage carDataModel, int position) {
                 Intent intent = new Intent(getApplicationContext(), CarDataPackage.class);
+                // put dataset name in intent
                 startActivity(intent);
             }
         };
