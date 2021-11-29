@@ -55,4 +55,13 @@
         app:srcCompat="@drawable/warning_img"
         android:contentDescription="@string/no_odb_adapter" />
 
+    <View
+        android:id="@+id/delimetr"
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:background="@color/grey_mercury"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSettings" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

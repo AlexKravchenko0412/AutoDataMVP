@@ -48,7 +48,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onClickListener.OnCarDataClick(carPackage, position);
+                onClickListener.OnCarDataClick(carPackage, holder.getAdapterPosition());
             }
         });
     }
