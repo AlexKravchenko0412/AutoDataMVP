@@ -28,11 +28,11 @@ public class DataSetActivity extends AppCompatActivity {
         ivCompositionDataset = findViewById(R.id.ivCompositionDataset);
         ivDataSellVariants = findViewById(R.id.ivDataSellVariants);
 
-       /* Bundle extras = getIntent().getExtras();
+       Bundle extras = getIntent().getExtras();
         if(extras != null) {
             String value = extras.getString("paramName");
             dataSetName.setText(value);
-        }*/
+        }
 
 
         View.OnClickListener btnDatasetClick = new View.OnClickListener() {
