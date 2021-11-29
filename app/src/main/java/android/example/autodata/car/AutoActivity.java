@@ -8,6 +8,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.example.autodata.OfferActivity;
 import android.example.autodata.R;
+import android.example.autodata.car.datasets.DataSetActivity;
 import android.example.autodata.stock.StockActivity;
 import android.example.autodata.settings.SettingsActivity;
 import android.os.Bundle;
@@ -36,8 +37,8 @@ public class AutoActivity extends AppCompatActivity {
         CarAdapter.OnCarDataClickListener carDataClickListener = new CarAdapter.OnCarDataClickListener() {
             @Override
             public void OnCarDataClick(CarDataPackage carDataModel, int position) {
-                Intent intent = new Intent(getApplicationContext(), CarDataPackage.class);
-                // put dataset name in intent
+                Intent intent = new Intent(getApplicationContext(), DataSetActivity.class);
+                //intent.putExtra("paramName",carDataModel.getParamName()); // put dataset name in intent
                 startActivity(intent);
             }
         };
