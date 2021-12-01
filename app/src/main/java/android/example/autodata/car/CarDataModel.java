@@ -20,11 +20,23 @@ public class CarDataModel {
 
     ArrayList<CarDataPackage> items = new ArrayList<>();
     private final String DATA_URL = "https://api.openweathermap.org/data/2.5/weather?q=Санкт-Петербург&appid=b47d1fe9f6c8abcc2c5ced5c59413e6d";
-    private CarAdapter carAdapter;
+    private CarDataPresenterInt carPresenter = null;
 
-    public CarDataModel(CarAdapter adapter) {
-        carAdapter = adapter;
-    } //constructor
+    private static final CarDataModel dataModel = new CarDataModel();
+
+    private CarDataModel() {};
+
+    public static CarDataModel getModel() {
+        return dataModel;
+    }
+
+    //public CarDataModel(CarAdapter adapter) {
+        //carAdapter = adapter;
+    //} //constructor
+
+    public void SetPresenter(CarDataPresenterInt presenter) {
+        carPresenter = presenter;
+    }
 
     public void onLoadCarData() {
         DownloadData downloadData = new DownloadData();
@@ -99,7 +111,7 @@ public class CarDataModel {
                     //String weather = String.format("%s\nTemp: %s\n%s", city, temp, description);
                     //textViewTest.setText(weather);
                 }
-                carAdapter.notifyDataSetChanged();
+                carPresenter.DataSetChange();
             } catch (JSONException e) {
                 e.printStackTrace();
             }

@@ -41,6 +41,7 @@ public class DataSetActivity extends AppCompatActivity {
                 switch (v.getId()) {
                     case R.id.ivCompositionDataset:
                         Intent intent = new Intent(DataSetActivity.this, DataSetCompositionActivity.class);
+                        startActivity(intent);
                         break;
                     case R.id.ivDataSellVariants:
                         ///

@@ -14,7 +14,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder> {
+public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder> implements CarDataPresenterInt{
+
+    @Override
+    public void DataSetChange() {
+        this.notifyDataSetChanged();
+    }
 
     interface OnCarDataClickListener {
         void OnCarDataClick(CarDataPackage carDataModel, int position);
@@ -28,7 +33,9 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder> {
     CarAdapter(Context context, OnCarDataClickListener onClickListener) {                        //What privacy should be there??????
         this.inflater = LayoutInflater.from(context);
         this.onClickListener = onClickListener;
-        dataModel = new CarDataModel(this);
+        dataModel = CarDataModel.getModel();
+        dataModel.SetPresenter(this);
+
     }
 
 

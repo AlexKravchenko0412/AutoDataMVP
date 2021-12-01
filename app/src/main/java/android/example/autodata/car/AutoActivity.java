@@ -21,7 +21,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class AutoActivity extends AppCompatActivity {
 
 
-    // ArrayList<CarDataPackage> dataPackage = new ArrayList<>();
+
     private ImageView auto;
     private ImageView stock;
     private ImageView offer;
