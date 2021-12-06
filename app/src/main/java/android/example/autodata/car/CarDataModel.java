@@ -16,7 +16,10 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 
-public class CarDataModel {
+public class CarDataModel
+{
+
+    JSONObject jsonObject = null;
 
     ArrayList<CarDataPackage> items = new ArrayList<>();
     private final String DATA_URL = "https://api.openweathermap.org/data/2.5/weather?q=Санкт-Петербург&appid=b47d1fe9f6c8abcc2c5ced5c59413e6d";
@@ -24,38 +27,63 @@ public class CarDataModel {
 
     private static final CarDataModel dataModel = new CarDataModel();
 
-    private CarDataModel() {};
+    private CarDataModel()
+    {
+    }
 
-    public static CarDataModel getModel() {
+
+    public static CarDataModel getModel()
+    {
         return dataModel;
     }
 
     //public CarDataModel(CarAdapter adapter) {
-        //carAdapter = adapter;
+    //carAdapter = adapter;
     //}
 
-    public void SetPresenter(CarDataPresenterInt presenter) {
+    public void SetPresenter(CarDataPresenterInt presenter)
+    {
         carPresenter = presenter;
     }
 
-    public void onLoadCarData() {
+    public void onLoadCarData()
+    {
         DownloadData downloadData = new DownloadData();
         downloadData.execute(DATA_URL);
 
     }
 
-    public int getSize() {
+    public int getSize()
+    {
         return items.size();
     }
 
-    public CarDataPackage getDataItem(int position) {
+    public CarDataPackage getDataItem(int position)
+    {
         return items.get(position);
     }
 
-    private class DownloadData extends AsyncTask<String, Void, String> {
+    public String getDefaultForm()
+    {
+        try
+        {
+            return jsonObject.getJSONObject("wind").getString("speed");
+
+        }
+        catch (JSONException e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+
+    private class DownloadData extends AsyncTask<String, Void, String>
+    {
 
         @Override
-        protected String doInBackground(String... strings) {
+        protected String doInBackground(String... strings)
+        {
 
             URL url = null;
             URLConnection urlConnection = null;
@@ -67,20 +95,30 @@ public class CarDataModel {
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
                 String line = bufferedReader.readLine();
-                while (line != null) {
+                while (line != null)
+                {
                     result.append(line);
                     line = bufferedReader.readLine();
                 }
                 return result.toString();
 
-            } catch (MalformedURLException e) {
+            }
+            catch (MalformedURLException e)
+            {
                 e.printStackTrace();
-            } catch (IOException e) {
+            }
+            catch (IOException e)
+            {
                 e.printStackTrace();
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 ex.printStackTrace();
-            } finally {
-                if (urlConnection != null) {
+            }
+            finally
+            {
+                if (urlConnection != null)
+                {
                     ((HttpURLConnection) urlConnection).disconnect();
                 }
 
@@ -91,12 +129,15 @@ public class CarDataModel {
 
 
         @Override
-        protected void onPostExecute(String s) {
+        protected void onPostExecute(String s)
+        {
             super.onPostExecute(s);
-            try {
+            try
+            {
 
-                if (s != null) {
-                    JSONObject jsonObject = new JSONObject(s);
+                if (s != null)
+                {
+                    jsonObject = new JSONObject(s);
                     String city = jsonObject.getString("name");
                     String temp = jsonObject.getJSONObject("main").getString("temp");
                     String description = jsonObject.getJSONArray("weather").getJSONObject(0).
@@ -104,6 +145,7 @@ public class CarDataModel {
                     items.add(new CarDataPackage(city, city, R.drawable.warning_img));
                     items.add(new CarDataPackage(temp, temp, R.drawable.warning_img));
                     items.add(new CarDataPackage(description, description, R.drawable.warning_img));
+
                     //ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
                     //       android.R.layout.simple_list_item_1, items);
                     //listViewTest.setAdapter(adapter);
@@ -112,12 +154,15 @@ public class CarDataModel {
                     //textViewTest.setText(weather);
                 }
                 carPresenter.DataSetChange();
-            } catch (JSONException e) {
+            }
+            catch (JSONException e)
+            {
                 e.printStackTrace();
             }
 
         }
 
-    }
 
+
+    }
 }

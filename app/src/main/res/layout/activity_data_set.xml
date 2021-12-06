@@ -182,5 +182,15 @@
         app:srcCompat="@drawable/term_img"
         android:contentDescription="@string/dataset_term_img" />
 
+    <TextView
+        android:id="@+id/textViewDefaultTerm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewTerm"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewTerm"
+        app:layout_constraintTop_toTopOf="@+id/imageViewTerm" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
