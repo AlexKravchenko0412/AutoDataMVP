@@ -3,7 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/MyProjects/AD/app/src/main/res/layout/activity_auto.xml" value="0.15625" />
         <entry key="..\:/MyProjects/AD/app/src/main/res/layout/activity_car.xml" value="0.22" />
         <entry key="..\:/MyProjects/AD/app/src/main/res/layout/activity_data_set.xml" value="0.2" />
         <entry key="..\:/MyProjects/AD/app/src/main/res/layout/activity_data_set_composition.xml" value="0.1" />
@@ -27,6 +26,7 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/AutoDataMVP/app/src/main/res/layout/activity_data_set.xml" value="0.33" />
         <entry key="..\:/Users/User/AndroidStudioProjects/AutoDataMVP/app/src/main/res/layout/activity_settings.xml" value="0.27853260869565216" />
         <entry key="..\:/Users/User/AndroidStudioProjects/AutoDataMVP/app/src/main/res/layout/activity_step_three.xml" value="0.27853260869565216" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/AutoDataMVP/app/src/main/res/layout/bottom_sheet_auto.xml" value="0.24320652173913043" />
         <entry key="..\:/Users/User/AndroidStudioProjects/AutoDataMVP/app/src/main/res/layout/car_package_list.xml" value="0.2916666666666667" />
         <entry key="..\:/Users/User/AndroidStudioProjects/AutoDataMVP/app/src/main/res/layout/dataset_list.xml" value="0.2717391304347826" />
         <entry key="..\:/Users/User/AndroidStudioProjects/AutoDataMVP/app/src/main/res/menu/bottom_navigation_selector.xml" value="0.359375" />

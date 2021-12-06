@@ -1,6 +1,5 @@
 package android.example.autodata.login;
 
-import android.content.Context;
 
 public interface LoginContract {
     interface LoginView {
@@ -9,6 +8,7 @@ public interface LoginContract {
 
     interface LoginPresenter {
         void onButtonWasClicked();
+
         void showDbLog();
     }
 

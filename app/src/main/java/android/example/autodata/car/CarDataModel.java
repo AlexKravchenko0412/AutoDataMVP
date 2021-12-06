@@ -32,7 +32,7 @@ public class CarDataModel {
 
     //public CarDataModel(CarAdapter adapter) {
         //carAdapter = adapter;
-    //} //constructor
+    //}
 
     public void SetPresenter(CarDataPresenterInt presenter) {
         carPresenter = presenter;

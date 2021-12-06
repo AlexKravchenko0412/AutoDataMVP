@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".car.datasets.DataSetActivity">
 
+    <include
+        layout="@layout/bottom_sheet_auto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivCompositionDataset"
+        app:layout_constraintVertical_bias="0.075" />
+
     <TextView
         android:id="@+id/textViewDataSetName"
         android:layout_width="0dp"
@@ -36,7 +47,7 @@
     <Button
         android:id="@+id/buttonAccept"
         android:layout_width="296dp"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:text="@string/button_accept"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavViewMenu"
