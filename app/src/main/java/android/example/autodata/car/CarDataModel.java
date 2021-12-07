@@ -37,9 +37,6 @@ public class CarDataModel
         return dataModel;
     }
 
-    //public CarDataModel(CarAdapter adapter) {
-    //carAdapter = adapter;
-    //}
 
     public void SetPresenter(CarDataPresenterInt presenter)
     {
@@ -146,12 +143,6 @@ public class CarDataModel
                     items.add(new CarDataPackage(temp, temp, R.drawable.warning_img));
                     items.add(new CarDataPackage(description, description, R.drawable.warning_img));
 
-                    //ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
-                    //       android.R.layout.simple_list_item_1, items);
-                    //listViewTest.setAdapter(adapter);
-
-                    //String weather = String.format("%s\nTemp: %s\n%s", city, temp, description);
-                    //textViewTest.setText(weather);
                 }
                 carPresenter.DataSetChange();
             }
@@ -161,8 +152,6 @@ public class CarDataModel
             }
 
         }
-
-
 
     }
 }

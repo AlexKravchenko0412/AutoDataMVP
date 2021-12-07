@@ -2,6 +2,7 @@ package android.example.autodata.car.datasets;
 
 import android.content.Intent;
 import android.example.autodata.R;
+import android.example.autodata.car.datasets.composition.DataSetCompositionActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;

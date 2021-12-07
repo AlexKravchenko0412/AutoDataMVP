@@ -186,11 +186,21 @@
         android:id="@+id/textViewDefaultTerm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
 
-        app:layout_constraintBottom_toBottomOf="@+id/imageViewTerm"
-        app:layout_constraintEnd_toStartOf="@+id/imageViewTerm"
-        app:layout_constraintTop_toTopOf="@+id/imageViewTerm" />
+        app:layout_constraintBottom_toBottomOf="@+id/textViewFrequency"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewTerm"
+        app:layout_constraintStart_toStartOf="@+id/imageViewTerm"
+        app:layout_constraintTop_toTopOf="@+id/textViewFrequency" />
+
+    <TextView
+        android:id="@+id/textViewFrequency"
+        android:layout_width="241dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/data_send_frequency"
+        app:layout_constraintEnd_toEndOf="@+id/tvDatasetTerm"
+        app:layout_constraintStart_toStartOf="@+id/tvDatasetTerm"
+        app:layout_constraintTop_toBottomOf="@+id/tvDatasetTerm" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

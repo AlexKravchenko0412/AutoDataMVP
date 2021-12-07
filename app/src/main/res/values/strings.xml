@@ -35,5 +35,7 @@
     <string name="dataset_price">Стоимость пакета:</string>
     <string name="dataset_term">Срок передачи данных:</string>
     <string name="dataset_term_img">Изображение срока передачи данных</string>
+    <string name="data_send_frequency">Частота передачи данных</string>
+    <string name="dataset_composition">Состав набора параметров</string>
 
 </resources>
