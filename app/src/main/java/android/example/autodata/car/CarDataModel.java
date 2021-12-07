@@ -50,6 +50,10 @@ public class CarDataModel {
         return items.size();
     }
 
+    public int getCompositionSize() {
+        return dataComposition.size();
+    }
+
     public CarDataPackage getDataItem(int position) {
         return items.get(position);
     }
@@ -84,7 +88,7 @@ public class CarDataModel {
     }
 
     public String getDataSetComposition(int position) {
-        return dataComposition.get(position);
+        return (position >=0 && position < dataComposition.size()) ? dataComposition.get(position) : "";
     }
 
     private class DownloadData extends AsyncTask<String, Void, String> {

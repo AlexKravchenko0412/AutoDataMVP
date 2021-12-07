@@ -17,5 +17,7 @@ public class DataSetCompositionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_data_set_composition);
 
         recyclerView = findViewById(R.id.recViewCar);
+        presenter = new CompositionPresenter(this);
+        recyclerView.setAdapter(presenter);
     }
 }

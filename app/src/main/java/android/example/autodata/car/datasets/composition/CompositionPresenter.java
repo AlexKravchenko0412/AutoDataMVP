@@ -2,7 +2,9 @@ package android.example.autodata.car.datasets.composition;
 
 import android.content.Context;
 import android.example.autodata.R;
+import android.example.autodata.car.CarAdapter;
 import android.example.autodata.car.CarDataModel;
+import android.example.autodata.car.CarDataPackage;
 import android.example.autodata.car.CarDataPresenterInt;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +21,7 @@ public class CompositionPresenter extends RecyclerView.Adapter<CompositionPresen
     private DataSetCompositionActivity view;
     private LayoutInflater inflater;
 
+
     public CompositionPresenter(Context context) {
         dataModel = CarDataModel.getModel();
         this.view = (DataSetCompositionActivity) view;
@@ -33,7 +36,7 @@ public class CompositionPresenter extends RecyclerView.Adapter<CompositionPresen
 
     @Override
     public CompositionPresenter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.composition_list,parent,false);
+        View view = inflater.inflate(R.layout.composition_list, parent, false);
         return new ViewHolder(view);
     }
 
@@ -45,10 +48,14 @@ public class CompositionPresenter extends RecyclerView.Adapter<CompositionPresen
 
     @Override
     public int getItemCount() {
-        return 0;
+        return dataModel.getCompositionSize();
     }
 
 
+    @Override
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        dataModel.initDataSetComposition();
+    }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
