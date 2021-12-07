@@ -3,8 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/MyProjects/AD/app/src/main/res/layout/activity_auto.xml" value="0.15625" />
         <entry key="..\:/MyProjects/AD/app/src/main/res/layout/activity_car.xml" value="0.22" />
-        <entry key="..\:/MyProjects/AD/app/src/main/res/layout/activity_data_set.xml" value="0.2" />
+        <entry key="..\:/MyProjects/AD/app/src/main/res/layout/activity_data_set.xml" value="0.75" />
         <entry key="..\:/MyProjects/AD/app/src/main/res/layout/activity_data_set_composition.xml" value="0.1" />
         <entry key="..\:/MyProjects/AD/app/src/main/res/layout/activity_main.xml" value="0.17" />
         <entry key="..\:/MyProjects/AD/app/src/main/res/layout/activity_settings.xml" value="0.22" />
@@ -12,6 +13,7 @@
         <entry key="..\:/MyProjects/AD/app/src/main/res/layout/car_data_package_list.xml" value="0.22" />
         <entry key="..\:/MyProjects/AD/app/src/main/res/layout/car_data_packages_list.xml" value="0.1693840579710145" />
         <entry key="..\:/MyProjects/AD/app/src/main/res/layout/car_package_list.xml" value="0.1" />
+        <entry key="..\:/MyProjects/AD/app/src/main/res/layout/composition_list.xml" value="0.22" />
         <entry key="..\:/MyProjects/AD/app/src/main/res/layout/list_item.xml" value="0.33" />
         <entry key="..\:/MyProjects/AD/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.1921875" />
         <entry key="..\:/MyProjects/AutoData/app/src/main/res/layout/activity_main.xml" value="0.2" />
@@ -23,13 +25,10 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/AutoData/app/src/main/res/layout/activity_step_two.xml" value="0.33" />
         <entry key="..\:/Users/User/AndroidStudioProjects/AutoDataMVP/app/src/main/res/layout/activity_auto.xml" value="0.33" />
         <entry key="..\:/Users/User/AndroidStudioProjects/AutoDataMVP/app/src/main/res/layout/activity_car.xml" value="0.2916666666666667" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/AutoDataMVP/app/src/main/res/layout/activity_data_set.xml" value="0.25" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/AutoDataMVP/app/src/main/res/layout/activity_data_set_composition.xml" value="0.22780797101449277" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/AutoDataMVP/app/src/main/res/layout/activity_data_set.xml" value="0.33" />
         <entry key="..\:/Users/User/AndroidStudioProjects/AutoDataMVP/app/src/main/res/layout/activity_settings.xml" value="0.27853260869565216" />
         <entry key="..\:/Users/User/AndroidStudioProjects/AutoDataMVP/app/src/main/res/layout/activity_step_three.xml" value="0.27853260869565216" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/AutoDataMVP/app/src/main/res/layout/bottom_sheet_auto.xml" value="0.24320652173913043" />
         <entry key="..\:/Users/User/AndroidStudioProjects/AutoDataMVP/app/src/main/res/layout/car_package_list.xml" value="0.2916666666666667" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/AutoDataMVP/app/src/main/res/layout/composition_list.xml" value="0.22780797101449277" />
         <entry key="..\:/Users/User/AndroidStudioProjects/AutoDataMVP/app/src/main/res/layout/dataset_list.xml" value="0.2717391304347826" />
         <entry key="..\:/Users/User/AndroidStudioProjects/AutoDataMVP/app/src/main/res/menu/bottom_navigation_selector.xml" value="0.359375" />
         <entry key="..\:/Users/User/AndroidStudioProjects/AutoDataMVP/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.359375" />

@@ -7,17 +7,22 @@
 
     <ImageView
         android:id="@+id/ivBlueBulletComposition"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="33dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/blue_bullet_img"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="33dp" />
+        android:contentDescription="@string/blue_bullet_sign" />
 
     <TextView
         android:id="@+id/textViewComposData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="157dp"
-        tools:layout_editor_absoluteY="50dp" />
+        android:layout_marginStart="20dp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/ivBlueBulletComposition"
+        app:layout_constraintStart_toEndOf="@+id/ivBlueBulletComposition"
+        app:layout_constraintTop_toTopOf="@+id/ivBlueBulletComposition" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,5 +37,6 @@
     <string name="dataset_term_img">Изображение срока передачи данных</string>
     <string name="data_send_frequency">Частота передачи данных</string>
     <string name="dataset_composition">Состав набора параметров</string>
+    <string name="blue_bullet_sign">Значок пункта набора параметров</string>
 
 </resources>
