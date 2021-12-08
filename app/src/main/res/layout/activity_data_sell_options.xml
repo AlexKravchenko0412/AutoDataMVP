@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".car.datasets.options.DataSellOptionsActivity">
+
+    <TextView
+        android:id="@+id/textViewOption"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:gravity="center"
+        android:text="@string/data_sell_options"
+        android:textColor="@color/black"
+        android:textSize="19sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/delimetr"
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:background="@color/grey_mercury"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewOption" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavViewMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:backgroundTint="@color/bottom_blue"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_bottom_navigation" />
+
+    <Button
+        android:id="@+id/buttonAccept"
+        android:layout_width="296dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="@string/button_accept"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavViewMenu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <RadioButton
+        android:id="@+id/radioButtonOperator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="33dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/delimetr" />
+
+    <RadioButton
+        android:id="@+id/radioButtonMarketplace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewMarkateplaceSell"
+        app:layout_constraintEnd_toEndOf="@+id/radioButtonOperator"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/radioButtonOperator"
+        app:layout_constraintTop_toTopOf="@+id/textViewMarkateplaceSell" />
+
+    <TextView
+        android:id="@+id/textViewOperator"
+        android:layout_width="218dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="63dp"
+        android:text="@string/sell_depersonalized_data"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="@+id/radioButtonOperator"
+        app:layout_constraintStart_toEndOf="@+id/radioButtonOperator"
+        app:layout_constraintTop_toTopOf="@+id/radioButtonOperator" />
+
+    <TextView
+        android:id="@+id/textViewPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/textViewOperator"
+        app:layout_constraintTop_toBottomOf="@+id/textViewOperator" />
+
+    <TextView
+        android:id="@+id/textViewMarkateplaceSell"
+        android:layout_width="218dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="@string/marketplace_sell"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewOperator"
+        app:layout_constraintStart_toStartOf="@+id/textViewOperator"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPrice" />
+
+    <TextView
+        android:id="@+id/tvMarketplacePrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/textViewMarkateplaceSell"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMarkateplaceSell" />
+
+    <CheckBox
+        android:id="@+id/checkBoxPersonalized"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPersonalData"
+        app:layout_constraintEnd_toEndOf="@+id/radioButtonMarketplace"
+        app:layout_constraintStart_toStartOf="@+id/radioButtonMarketplace"
+        app:layout_constraintTop_toTopOf="@+id/tvPersonalData" />
+
+    <TextView
+        android:id="@+id/tvPersonalData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="@string/personalized_data"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewMarkateplaceSell"
+        app:layout_constraintStart_toStartOf="@+id/textViewMarkateplaceSell"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMarkateplaceSell" />
+
+    <TextView
+        android:id="@+id/tvPersonalizedDataPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/tvPersonalData"
+        app:layout_constraintTop_toBottomOf="@+id/tvPersonalData" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
