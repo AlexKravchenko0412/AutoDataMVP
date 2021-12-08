@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -11,18 +10,23 @@
         android:layout_height="12dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="33dp"
+        android:contentDescription="@string/blue_bullet_sign"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/blue_bullet_img"
-        android:contentDescription="@string/blue_bullet_sign" />
+        app:srcCompat="@drawable/blue_bullet_img" />
 
-    <TextView
-        android:id="@+id/textViewComposData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        app:layout_constraintBottom_toBottomOf="@+id/ivBlueBulletComposition"
-        app:layout_constraintStart_toEndOf="@+id/ivBlueBulletComposition"
-        app:layout_constraintTop_toTopOf="@+id/ivBlueBulletComposition" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/textViewComposData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:text="@string/param_name" />
+    </LinearLayout>
+
+</LinearLayout>

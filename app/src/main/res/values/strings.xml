@@ -38,5 +38,6 @@
     <string name="data_send_frequency">Частота передачи данных</string>
     <string name="dataset_composition">Состав набора параметров</string>
     <string name="blue_bullet_sign">Значок пункта набора параметров</string>
+    <string name="param_name">Название параметра</string>
 
 </resources>
