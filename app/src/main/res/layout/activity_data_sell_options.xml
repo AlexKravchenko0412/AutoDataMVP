@@ -50,6 +50,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+
+
     <RadioButton
         android:id="@+id/radioButtonOperator"
         android:layout_width="wrap_content"
@@ -68,6 +70,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/radioButtonOperator"
         app:layout_constraintTop_toTopOf="@+id/textViewMarkateplaceSell" />
+
+
 
     <TextView
         android:id="@+id/textViewOperator"

@@ -3,6 +3,7 @@ package android.example.autodata.car.datasets;
 import android.content.Intent;
 import android.example.autodata.R;
 import android.example.autodata.car.datasets.composition.DataSetCompositionActivity;
+import android.example.autodata.car.datasets.options.DataSellOptionsActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -48,7 +49,8 @@ public class DataSetActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case R.id.ivDataSellVariants:
-                        ///
+                        Intent intentVar = new Intent(DataSetActivity.this, DataSellOptionsActivity.class);
+                        startActivity(intentVar);
                         break;
                     case R.id.imageViewTerm:
 
