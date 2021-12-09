@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.example.autodata.R;
 import android.os.Bundle;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
 
@@ -11,12 +12,14 @@ public class DataSellOptionsActivity extends AppCompatActivity implements Compou
 
     private RadioButton radioButtonOperator;
     private RadioButton radioButtonMarketplace;
+    private CheckBox checkBoxPersonalized;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_sell_options);
 
+        checkBoxPersonalized = findViewById(R.id.checkBoxPersonalized);
         radioButtonOperator = findViewById(R.id.radioButtonOperator);
         radioButtonMarketplace = findViewById(R.id.radioButtonMarketplace);
         radioButtonOperator.setOnCheckedChangeListener(this);
@@ -25,18 +28,18 @@ public class DataSellOptionsActivity extends AppCompatActivity implements Compou
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if(isChecked) {
-            if(buttonView.getId() == R.id.radioButtonOperator){
+        if (isChecked) {
+            if (buttonView.getId() == R.id.radioButtonOperator) {
                 radioButtonMarketplace.setChecked(false);
             }
 
         }
-            if(isChecked) {
-                if(buttonView.getId() == R.id.radioButtonMarketplace) {
-                    radioButtonOperator.setChecked(false);
-                }
-
+        if (isChecked) {
+            if (buttonView.getId() == R.id.radioButtonMarketplace) {
+                radioButtonOperator.setChecked(false);
             }
+
+        }
 
     }
 }
