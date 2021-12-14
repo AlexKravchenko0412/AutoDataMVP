@@ -7,6 +7,7 @@ import android.example.autodata.car.datasets.options.DataSellOptionsActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +20,7 @@ public class DataSetActivity extends AppCompatActivity {
     private ImageView ivCompositionDataset;
     private ImageView ivDataSellVariants;
     private FormPresenter presenter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +55,7 @@ public class DataSetActivity extends AppCompatActivity {
                         startActivity(intentVar);
                         break;
                     case R.id.imageViewTerm:
-
+                        //Intent intentTerm = new Intent(DataSetActivity.this, );
                         break;
                 }
             }
