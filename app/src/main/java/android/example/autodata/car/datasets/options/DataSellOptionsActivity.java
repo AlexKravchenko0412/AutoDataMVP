@@ -7,12 +7,17 @@ import android.os.Bundle;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 public class DataSellOptionsActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
 
     private RadioButton radioButtonOperator;
     private RadioButton radioButtonMarketplace;
     private CheckBox checkBoxPersonalized;
+    private TextView price;
+    private TextView marketPrice;
+    private TextView personPrice;
+    private DataSellOptionsPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +29,11 @@ public class DataSellOptionsActivity extends AppCompatActivity implements Compou
         radioButtonMarketplace = findViewById(R.id.radioButtonMarketplace);
         radioButtonOperator.setOnCheckedChangeListener(this);
         radioButtonMarketplace.setOnCheckedChangeListener(this);
+
+        price = findViewById(R.id.textViewPrice);
+        marketPrice = findViewById(R.id.tvMarketplacePrice);
+        personPrice = findViewById(R.id.tvPersonalizedDataPrice);
+        presenter = new DataSellOptionsPresenter(this);
     }
 
     @Override
@@ -40,5 +50,17 @@ public class DataSellOptionsActivity extends AppCompatActivity implements Compou
             }
 
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        presenter.onOptionsStart();
+    }
+
+    public void setPrices(String pPrice, String mPrice, String perPrice) {
+        price.setText(pPrice);
+        marketPrice.setText(mPrice);
+        personPrice.setText(perPrice);
     }
 }

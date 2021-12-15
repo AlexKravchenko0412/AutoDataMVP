@@ -43,7 +43,6 @@ public class CarDataModel {
     public void onLoadCarData() {
         DownloadData downloadData = new DownloadData();
         downloadData.execute(DATA_URL);
-
     }
 
     public int getSize() {
@@ -68,6 +67,18 @@ public class CarDataModel {
         }
 
     }
+
+    public void getDataSellOptions() {
+        try {
+            String price = jsonObject.getString("timezone");
+            String marketPrice = jsonObject.getString("cod");
+            String personPrice = jsonObject.getString("name");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
     public void initDataSetComposition() {
         try {
