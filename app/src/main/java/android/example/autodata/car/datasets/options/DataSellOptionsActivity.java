@@ -40,6 +40,5 @@ public class DataSellOptionsActivity extends AppCompatActivity implements Compou
             }
 
         }
-
     }
 }
