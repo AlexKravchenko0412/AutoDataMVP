@@ -1,6 +1,7 @@
 package android.example.autodata.car;
 
 import android.example.autodata.R;
+import android.example.autodata.car.datasets.options.SellOptions;
 import android.os.AsyncTask;
 
 import org.json.JSONException;
@@ -68,15 +69,14 @@ public class CarDataModel {
 
     }
 
-    public void getDataSellOptions() {
+    public SellOptions getDataSellOptions() {
         try {
-            String price = jsonObject.getString("timezone");
-            String marketPrice = jsonObject.getString("cod");
-            String personPrice = jsonObject.getString("name");
+            return new SellOptions(jsonObject.getString("timezone"),
+                    jsonObject.getString("cod"),jsonObject.getString("name"));
         } catch (JSONException e) {
             e.printStackTrace();
+            return null;
         }
-
     }
 
 

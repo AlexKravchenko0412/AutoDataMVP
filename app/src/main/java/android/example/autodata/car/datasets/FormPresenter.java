@@ -1,10 +1,9 @@
 package android.example.autodata.car.datasets;
 
 import android.app.Activity;
-import android.content.Context;
 import android.example.autodata.car.CarDataModel;
 import android.example.autodata.car.CarDataPresenterInt;
-import android.view.View;
+
 
 public class FormPresenter implements CarDataPresenterInt {
 

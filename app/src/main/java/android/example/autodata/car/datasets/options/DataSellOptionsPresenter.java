@@ -14,7 +14,7 @@ public class DataSellOptionsPresenter {
     }
 
     public void onOptionsStart() {
-
-        view.setPrices();
+        SellOptions sellOptions = model.getDataSellOptions();
+        view.setPrices(sellOptions.getMarketPrice(), sellOptions.getPrice(), sellOptions.getPersonPrice());
     }
 }

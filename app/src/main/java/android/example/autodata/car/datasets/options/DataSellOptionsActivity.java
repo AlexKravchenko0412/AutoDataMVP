@@ -59,9 +59,9 @@ public class DataSellOptionsActivity extends AppCompatActivity implements Compou
         presenter.onOptionsStart();
     }
 
-    public void setPrices(String pPrice, String mPrice, String perPrice) {
-        price.setText(pPrice);
-        marketPrice.setText(mPrice);
-        personPrice.setText(perPrice);
+    public void setPrices(String a, String b, String c) {
+        price.setText(a);
+        marketPrice.setText(b);
+        personPrice.setText(c);
     }
 }
