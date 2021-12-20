@@ -50,6 +50,7 @@ public class DataSellOptionsActivity extends AppCompatActivity implements Compou
             }
 
         }
+
     }
 
     @Override
@@ -58,7 +59,9 @@ public class DataSellOptionsActivity extends AppCompatActivity implements Compou
         presenter.onOptionsStart();
     }
 
-    public void setPrices() {
-
+    public void setPrices(String a, String b, String c) {
+        price.setText(a);
+        marketPrice.setText(b);
+        personPrice.setText(c);
     }
 }

@@ -1,6 +1,7 @@
 package android.example.autodata.car;
 
 import android.example.autodata.R;
+import android.example.autodata.car.datasets.options.SellOptions;
 import android.os.AsyncTask;
 
 import org.json.JSONException;
@@ -22,8 +23,6 @@ public class CarDataModel {
 
     ArrayList<CarDataPackage> items = new ArrayList<>();
     ArrayList<String> dataComposition = new ArrayList<String>();
-    ArrayList<String> dataSellOptions = new ArrayList<>();
-
     private final String DATA_URL = "https://api.openweathermap.org/data/2.5/weather?q=Санкт-Петербург&appid=b47d1fe9f6c8abcc2c5ced5c59413e6d";
     private CarDataPresenterInt carPresenter = null;
 
@@ -70,17 +69,13 @@ public class CarDataModel {
 
     }
 
-    public void initDataSellOptions() {
+    public SellOptions getDataSellOptions() {
         try {
-            String price = jsonObject.getString("timezone");
-            String marketPrice = jsonObject.getString("cod");
-            String personPrice = jsonObject.getString("name");
-            dataSellOptions.add(price);
-            dataSellOptions.add(marketPrice);
-            dataSellOptions.add(personPrice);
-        }
-        catch (JSONException e) {
+            return new SellOptions(jsonObject.getString("timezone"),
+                    jsonObject.getString("cod"),jsonObject.getString("name"));
+        } catch (JSONException e) {
             e.printStackTrace();
+            return null;
         }
     }
 
