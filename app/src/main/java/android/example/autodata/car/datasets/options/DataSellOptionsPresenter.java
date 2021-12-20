@@ -14,7 +14,7 @@ public class DataSellOptionsPresenter {
     }
 
     public void onOptionsStart() {
-
+        model.initDataSellOptions();
         view.setPrices();
     }
 }

@@ -22,6 +22,8 @@ public class CarDataModel {
 
     ArrayList<CarDataPackage> items = new ArrayList<>();
     ArrayList<String> dataComposition = new ArrayList<String>();
+    ArrayList<String> dataSellOptions = new ArrayList<>();
+
     private final String DATA_URL = "https://api.openweathermap.org/data/2.5/weather?q=Санкт-Петербург&appid=b47d1fe9f6c8abcc2c5ced5c59413e6d";
     private CarDataPresenterInt carPresenter = null;
 
@@ -68,15 +70,18 @@ public class CarDataModel {
 
     }
 
-    public void getDataSellOptions() {
+    public void initDataSellOptions() {
         try {
             String price = jsonObject.getString("timezone");
             String marketPrice = jsonObject.getString("cod");
             String personPrice = jsonObject.getString("name");
-        } catch (JSONException e) {
+            dataSellOptions.add(price);
+            dataSellOptions.add(marketPrice);
+            dataSellOptions.add(personPrice);
+        }
+        catch (JSONException e) {
             e.printStackTrace();
         }
-
     }
 
 
