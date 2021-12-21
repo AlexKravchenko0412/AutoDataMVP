@@ -8,10 +8,14 @@ import android.example.autodata.R;
 import android.example.autodata.car.AutoActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class SettingsActivity extends AppCompatActivity {
+
+    private Button btnChooseDevice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +23,7 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavViewMenu);
+        btnChooseDevice = findViewById(R.id.btnChooseDevice);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -40,6 +45,14 @@ public class SettingsActivity extends AppCompatActivity {
                         break;
                 }
                 return false;
+            }
+        });
+
+        btnChooseDevice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SettingsActivity.this, DeviceSearchActivity.class);
+                startActivity(intent);
             }
         });
     }

@@ -43,5 +43,9 @@
     <string name="sell_depersonalized_data">Продажа Оператору деперсонализованных данных</string>
     <string name="marketplace_sell">Продажа на маркетплейсе</string>
     <string name="personalized_data">Персонализированные данные</string>
+    <string name="choose_device">Выбор устройства</string>
+    <string name="obd_adapter">OBD-адаптер</string>
+    <string name="choose_standart_device">Выбрать штатное устройство</string>
+    <string name="obd_not_found">OBD-адаптер не найден</string>
 
 </resources>
