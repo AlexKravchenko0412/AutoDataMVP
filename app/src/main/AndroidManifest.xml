@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AutoData">
         <activity
+            android:name=".settings.PairedDevicesActivity"
+            android:exported="false" />
+        <activity
             android:name=".settings.DeviceSearchActivity"
             android:exported="false" />
         <activity

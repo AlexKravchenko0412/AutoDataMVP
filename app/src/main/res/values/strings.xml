@@ -47,5 +47,8 @@
     <string name="obd_adapter">OBD-адаптер</string>
     <string name="choose_standart_device">Выбрать штатное устройство</string>
     <string name="obd_not_found">OBD-адаптер не найден</string>
+    <string name="device_search">Поиск устройства</string>
+    <string name="no_vin">VIN не задан</string>
+    <string name="vin">VIN</string>
 
 </resources>

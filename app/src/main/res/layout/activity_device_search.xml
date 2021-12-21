@@ -77,4 +77,42 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvChooseStandartDevice" />
 
+    <TextView
+        android:id="@+id/textViewObdAdapter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/obd_adapter"
+        app:layout_constraintStart_toStartOf="@+id/tvObdFoundation"
+        app:layout_constraintTop_toBottomOf="@+id/tvObdFoundation" />
+
+    <Button
+        android:id="@+id/btnDeviceSearch"
+        android:layout_width="304dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/device_search"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewObdAdapter" />
+
+    <Spinner
+        android:id="@+id/spinnerVIN"
+        android:layout_width="304dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
+        android:contentDescription="@string/no_vin"
+        app:layout_constraintEnd_toEndOf="@+id/btnDeviceSearch"
+        app:layout_constraintStart_toStartOf="@+id/btnDeviceSearch"
+        app:layout_constraintTop_toBottomOf="@+id/btnDeviceSearch" />
+
+    <TextView
+        android:id="@+id/textViewVIN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/vin"
+        app:layout_constraintStart_toStartOf="@+id/spinnerVIN"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerVIN" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
