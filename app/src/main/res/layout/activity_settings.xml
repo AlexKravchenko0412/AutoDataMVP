@@ -65,11 +65,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewSettings" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="296dp"
-        android:layout_height="64dp"
-        android:text="@string/choose"
-        tools:layout_editor_absoluteX="81dp"
-        tools:layout_editor_absoluteY="164dp" />
+        android:id="@+id/btnChooseDevice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNoODB" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
