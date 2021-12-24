@@ -65,7 +65,7 @@ public class DeviceSearchActivity extends AppCompatActivity {
                for(BluetoothDevice device : pairedDevices)
                {
                    listPairedDevices.add(device.getName().toString());
-                   count++;
+
                }
            }
 
