@@ -9,10 +9,13 @@ import android.content.Intent;
 import android.example.autodata.R;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class DeviceSearchActivity extends AppCompatActivity {
@@ -20,20 +23,21 @@ public class DeviceSearchActivity extends AppCompatActivity {
     //private static final int REQUEST_ENABLE_BT = 0;
     //private static final int REQUEST_DISCOVER_BT = 1;
     private int REQUEST_CODE = 1;
-    private Set<BluetoothDevice> pairedDevices;
+    private Set<BluetoothDevice> pairedDev;
     private ArrayList<String> listPairedDevices;
-
-
+    //private ListView lvPairedDevices;
+   // private ArrayAdapter adapter;
     private Button btnDeviceSearch;
 
     BluetoothAdapter mBlueAdapter;
-    //private ArrayList<String> pairedDevs;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device_search);
         btnDeviceSearch = findViewById(R.id.btnDeviceSearch);
+        //lvPairedDevices = findViewById(R.id.lvPairedDevices);
 
         btnDeviceSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +51,11 @@ public class DeviceSearchActivity extends AppCompatActivity {
                         startActivityForResult(intent, REQUEST_CODE);
                     }
                 }
+                Bundle bundle = new Bundle();
+                bundle.putStringArrayList("pairs",listPairedDevices);
+                Intent intent = new Intent(DeviceSearchActivity.this, PairedDevicesActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
     }
@@ -55,21 +64,22 @@ public class DeviceSearchActivity extends AppCompatActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == REQUEST_CODE)
-        {
-           if(resultCode==RESULT_OK)
-           {
-               showToast("Bluetooth on");
-               pairedDevices = mBlueAdapter.getBondedDevices();
-               int count = pairedDevices.size();
-               for(BluetoothDevice device : pairedDevices)
-               {
-                   listPairedDevices.add(device.getName().toString());
-
-               }
-           }
-
-
+        if (requestCode == REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                showToast("Bluetooth on");
+                pairedDev = mBlueAdapter.getBondedDevices();
+                listPairedDevices = new ArrayList<>();
+                int count = pairedDev.size();
+                if (count > 0) {
+                    for (BluetoothDevice device : pairedDev) {
+                        String devName = device.getName();
+                        listPairedDevices.add(devName);
+                    }
+                }
+                //adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1,
+                  //      (List) lvPairedDevices);
+                //lvPairedDevices.setAdapter(adapter);
+            }
         }
     }
 
