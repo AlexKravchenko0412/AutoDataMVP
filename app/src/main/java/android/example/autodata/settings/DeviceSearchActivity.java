@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.example.autodata.R;
 import android.os.Bundle;
 import android.view.View;
@@ -28,7 +31,7 @@ public class DeviceSearchActivity extends AppCompatActivity {
     //private ListView lvPairedDevices;
    // private ArrayAdapter adapter;
     private Button btnDeviceSearch;
-
+    private BroadcastReceiver receiver;
     BluetoothAdapter mBlueAdapter;
 
 
@@ -49,11 +52,10 @@ public class DeviceSearchActivity extends AppCompatActivity {
             }
         }
 
+
         btnDeviceSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 pairedDev = mBlueAdapter.getBondedDevices();
                 listPairedDevices = new ArrayList<>();
                 int count = pairedDev.size();
@@ -61,9 +63,33 @@ public class DeviceSearchActivity extends AppCompatActivity {
                     for (BluetoothDevice device : pairedDev) {
                         String devName = device.getName();
                         String devAddress = device.getAddress();
-                        listPairedDevices.add(devName + " : " + devAddress);
+                        //listPairedDevices.add(devName + " : " + devAddress);
                     }
                 }
+//trying to discover devices
+                if(mBlueAdapter.isDiscovering()) { //cancel discovery if its discovering
+                    mBlueAdapter.cancelDiscovery();
+                }
+
+                mBlueAdapter.startDiscovery();
+
+//intent filter
+                IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
+                registerReceiver(receiver, filter);
+
+                //broadcastReceiver
+              receiver = new BroadcastReceiver() {
+                    @Override
+                    public void onReceive(Context context, Intent intent) {
+                        String action = intent.getAction();
+                        if(BluetoothDevice.ACTION_FOUND.equals(action)) {
+                            BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                            String deviceName = device.getName();
+                            String deviceAddress = device.getAddress();
+                            listPairedDevices.add(deviceName + " : " + deviceAddress);
+                        }
+                    }
+                };
 
                 Bundle bundle = new Bundle();
                 bundle.putStringArrayList("pairs",listPairedDevices);
@@ -91,6 +117,11 @@ public class DeviceSearchActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(receiver);
+    }
 
     private void showToast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
