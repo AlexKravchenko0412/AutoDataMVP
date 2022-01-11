@@ -53,6 +53,7 @@ public class DeviceSearchActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+
                 pairedDev = mBlueAdapter.getBondedDevices();
                 listPairedDevices = new ArrayList<>();
                 int count = pairedDev.size();
@@ -60,7 +61,7 @@ public class DeviceSearchActivity extends AppCompatActivity {
                     for (BluetoothDevice device : pairedDev) {
                         String devName = device.getName();
                         String devAddress = device.getAddress();
-                        listPairedDevices.add(devName);
+                        listPairedDevices.add(devName + " : " + devAddress);
                     }
                 }
 
