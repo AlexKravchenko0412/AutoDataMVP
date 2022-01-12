@@ -31,7 +31,18 @@ public class DeviceSearchActivity extends AppCompatActivity {
     //private ListView lvPairedDevices;
    // private ArrayAdapter adapter;
     private Button btnDeviceSearch;
-    private BroadcastReceiver receiver;
+    private final BroadcastReceiver receiver  = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if(BluetoothDevice.ACTION_FOUND.equals(action)) {
+                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                String deviceName = device.getName();
+                String deviceAddress = device.getAddress();
+                listPairedDevices.add(deviceName + " : " + deviceAddress);
+            }
+        }
+    };
     BluetoothAdapter mBlueAdapter;
 
 
@@ -71,14 +82,12 @@ public class DeviceSearchActivity extends AppCompatActivity {
                     mBlueAdapter.cancelDiscovery();
                 }
 
-                mBlueAdapter.startDiscovery();
-
 //intent filter
                 IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
                 registerReceiver(receiver, filter);
-
+                mBlueAdapter.startDiscovery();
                 //broadcastReceiver
-              receiver = new BroadcastReceiver() {
+             /* receiver = new BroadcastReceiver() {
                     @Override
                     public void onReceive(Context context, Intent intent) {
                         String action = intent.getAction();
@@ -89,7 +98,7 @@ public class DeviceSearchActivity extends AppCompatActivity {
                             listPairedDevices.add(deviceName + " : " + deviceAddress);
                         }
                     }
-                };
+                }; */
 
                 Bundle bundle = new Bundle();
                 bundle.putStringArrayList("pairs",listPairedDevices);
