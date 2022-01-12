@@ -52,7 +52,7 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Intent intent = new Intent(SettingsActivity.this, DeviceSearchActivity.class);
-                Intent intent = new Intent(SettingsActivity.this, DeviceSearchActivityTest.class);
+                Intent intent = new Intent(SettingsActivity.this, DeviceSearchActivity.class);
                 startActivity(intent);
             }
         });
