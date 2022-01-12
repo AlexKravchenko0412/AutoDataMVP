@@ -21,6 +21,7 @@ public class DeviceSearchActivityTest extends AppCompatActivity {
     private static final int REQUEST_DISCOVER_BT = 1;
     BluetoothAdapter adapter;
     private ArrayList<String> pairedList;
+    private String dev;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +41,34 @@ public class DeviceSearchActivityTest extends AppCompatActivity {
         if (adapter.isEnabled()) {
             showToast("Bluetooth включен");
         } else {
-            showToast("Bluetooth выключен");
+            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(enableBtIntent,REQUEST_ENABLE_BT);
         }
 
         btnDevSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(adapter.isEnabled()) {
+                    String devName = adapter.getName();
+                    String devAddress = adapter.getAddress();
+                    dev = devName + " : " + devAddress;
+                } else
+                    {
+                        dev = "Bluetooth off";
+                    }
+                showToast(dev);
+
+                Set<BluetoothDevice> pairedDevices = adapter.getBondedDevices();
+                if(pairedDevices.size() > 0) {
+                    for(BluetoothDevice device : pairedDevices) {
+                        pairedList.add(device.getName() + "\n" + device.getAddress());
+                    }
+                }
+
+            }
+        });
+
+       /* btnDevSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (adapter.isEnabled()) {
@@ -62,7 +87,7 @@ public class DeviceSearchActivityTest extends AppCompatActivity {
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
-        });
+        }); */
 
     }
 

@@ -21,11 +21,12 @@ public class PairedDevicesActivityTest extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_paired_devices_test);
 
-        lvPairedDevices = findViewById(R.id.lvPairedDevices);
+       /* lvPairedDevices = findViewById(R.id.lvPairedDevices);
         Bundle bundle = getIntent().getExtras();
         pairs = bundle.getStringArrayList("pairs");
         Intent intent = new Intent();
         adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1,pairs);
         lvPairedDevices.setAdapter(adapter);
+        */
     }
 }
