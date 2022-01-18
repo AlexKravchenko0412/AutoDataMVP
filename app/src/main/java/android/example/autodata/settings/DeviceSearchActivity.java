@@ -2,6 +2,8 @@ package android.example.autodata.settings;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
@@ -32,13 +34,24 @@ public class DeviceSearchActivity extends AppCompatActivity {
     private Set<BluetoothDevice> pairedDev;
     private ArrayList<String> listPairedDevices;
     //private ListView lvPairedDevices;
-   // private ArrayAdapter adapter;
+    // private ArrayAdapter adapter;
     private Button btnDeviceSearch;
-    private BroadcastReceiver receiver;
+    private BroadcastReceiver receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (BluetoothDevice.ACTION_FOUND.equals(action)) {
+                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                String deviceName = device.getName();
+                String deviceAddress = device.getAddress();
+                listPairedDevices.add(deviceName + " : " + deviceAddress);
+
+            }
+        }
+    };
+
     BluetoothAdapter mBlueAdapter;
 
-
-    private static final int PERMISSION_REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,45 +85,20 @@ public class DeviceSearchActivity extends AppCompatActivity {
                     }
                 }
 
-            //PERMISSION
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-
-                    if (checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
-                            == PackageManager.PERMISSION_DENIED) {
-
-                        Log.d("permission", "permission denied to SEND_SMS - requesting it");
-                        String[] permissions = {Manifest.permission.ACCESS_COARSE_LOCATION};
-
-                        requestPermissions(permissions, PERMISSION_REQUEST_CODE);
-
-                    }
-                }
 
 
-
-                if(mBlueAdapter.isDiscovering()) {
+                if (mBlueAdapter.isDiscovering()) {
                     mBlueAdapter.cancelDiscovery();
                 }
-                mBlueAdapter.startDiscovery();
+
 
                 IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
                 registerReceiver(receiver, filter);
 
-              receiver = new BroadcastReceiver() {
-                    @Override
-                    public void onReceive(Context context, Intent intent) {
-                        String action = intent.getAction();
-                        if(BluetoothDevice.ACTION_FOUND.equals(action)) {
-                            BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                            String deviceName = device.getName();
-                            String deviceAddress = device.getAddress();
-                            listPairedDevices.add(deviceName + " : " + deviceAddress);
-                        }
-                    }
-                };
+                mBlueAdapter.startDiscovery();
 
                 Bundle bundle = new Bundle();
-                bundle.putStringArrayList("pairs",listPairedDevices);
+                bundle.putStringArrayList("pairs", listPairedDevices);
                 Intent intent = new Intent(DeviceSearchActivity.this, PairedDevicesActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
@@ -128,13 +116,37 @@ public class DeviceSearchActivity extends AppCompatActivity {
                 showToast("Bluetooth on");
 
                 //adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1,
-                  //      (List) lvPairedDevices);
+                //      (List) lvPairedDevices);
                 //lvPairedDevices.setAdapter(adapter);
             } else {
                 showToast("Bluetooth off");
             }
         }
     }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    2);
+        }
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
+                    4);
+        }
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_ADMIN)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.BLUETOOTH_ADMIN},
+                    3);
+        }
+    }
+
 
     @Override
     protected void onDestroy() {

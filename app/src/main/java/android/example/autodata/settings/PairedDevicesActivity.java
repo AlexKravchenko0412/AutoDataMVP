@@ -25,8 +25,10 @@ public class PairedDevicesActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         pairs = bundle.getStringArrayList("pairs");
         Intent intent = new Intent();
-        adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1,pairs);
-        lvPairedDevices.setAdapter(adapter);
+        if(pairs.size() != 0) {
+            adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1,pairs);
+            lvPairedDevices.setAdapter(adapter);
+        }
 
     }
 }
