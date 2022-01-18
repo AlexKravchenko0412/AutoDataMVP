@@ -26,13 +26,13 @@ public class DeviceScanActivity extends AppCompatActivity {
     BluetoothAdapter mBlueAdapter;
     private int REQUEST_CODE = 1;
     private Set<BluetoothDevice> pairedDev;
-    private ArrayList<String> listPairedDevices;
+    private ArrayList<String> listPairedDevices = new ArrayList<String>();
 
     private ListView lvPairedDevices;
     //private ArrayList pairs;
     private ArrayAdapter adapter;
 
-    /*private BroadcastReceiver receiver = new BroadcastReceiver() {
+    private BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
@@ -41,9 +41,10 @@ public class DeviceScanActivity extends AppCompatActivity {
                 String deviceName = device.getName();
                 String deviceAddress = device.getAddress();
                 listPairedDevices.add(deviceName + " : " + deviceAddress);
+                adapter.notifyDataSetChanged();
             }
         }
-    };*/
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,20 +63,22 @@ public class DeviceScanActivity extends AppCompatActivity {
             }
         }
 
-        //if (mBlueAdapter.isDiscovering()) {
-        //    mBlueAdapter.cancelDiscovery();
-       // }
+        if (mBlueAdapter.isDiscovering()) {
+            mBlueAdapter.cancelDiscovery();
+        }
 
-       // IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
-        //registerReceiver(receiver, filter);
+        IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
+        registerReceiver(receiver, filter);
 
-       // mBlueAdapter.startDiscovery();
+        adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1,listPairedDevices);
+        lvPairedDevices.setAdapter(adapter);
 
-       // if(listPairedDevices.size() != 0) {
-      //      adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1,listPairedDevices);
-       //     lvPairedDevices.setAdapter(adapter);
-        //    adapter.notifyDataSetChanged();
-        //}
+        mBlueAdapter.startDiscovery();
+
+
+
+            //adapter.notifyDataSetChanged();
+
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
