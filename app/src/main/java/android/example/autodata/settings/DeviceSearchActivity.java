@@ -3,14 +3,17 @@ package android.example.autodata.settings;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.example.autodata.R;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -34,6 +37,8 @@ public class DeviceSearchActivity extends AppCompatActivity {
     private BroadcastReceiver receiver;
     BluetoothAdapter mBlueAdapter;
 
+
+    private static final int PERMISSION_REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,18 +71,31 @@ public class DeviceSearchActivity extends AppCompatActivity {
                         //listPairedDevices.add(devName + " : " + devAddress);
                     }
                 }
-//trying to discover devices
-                if(mBlueAdapter.isDiscovering()) { //cancel discovery if its discovering
-                    mBlueAdapter.cancelDiscovery();
+
+            //PERMISSION
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+
+                    if (checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
+                            == PackageManager.PERMISSION_DENIED) {
+
+                        Log.d("permission", "permission denied to SEND_SMS - requesting it");
+                        String[] permissions = {Manifest.permission.ACCESS_COARSE_LOCATION};
+
+                        requestPermissions(permissions, PERMISSION_REQUEST_CODE);
+
+                    }
                 }
 
+
+
+                if(mBlueAdapter.isDiscovering()) {
+                    mBlueAdapter.cancelDiscovery();
+                }
                 mBlueAdapter.startDiscovery();
 
-//intent filter
                 IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
                 registerReceiver(receiver, filter);
 
-                //broadcastReceiver
               receiver = new BroadcastReceiver() {
                     @Override
                     public void onReceive(Context context, Intent intent) {
@@ -99,6 +117,7 @@ public class DeviceSearchActivity extends AppCompatActivity {
             }
         });
     }
+
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
