@@ -2,7 +2,9 @@ package android.example.autodata.settings;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
@@ -132,7 +134,11 @@ public class DeviceSearchActivity extends AppCompatActivity {
         unregisterReceiver(receiver);
     }
 
+
     private void showToast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 }
+
+
+
