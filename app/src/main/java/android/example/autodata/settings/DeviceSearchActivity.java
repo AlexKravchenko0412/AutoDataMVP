@@ -1,6 +1,4 @@
 package android.example.autodata.settings;
-
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -15,28 +13,21 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.example.autodata.R;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 public class DeviceSearchActivity extends AppCompatActivity {
 
-    //private static final int REQUEST_ENABLE_BT = 0;
-    //private static final int REQUEST_DISCOVER_BT = 1;
-    private int REQUEST_CODE = 1;
-    private Set<BluetoothDevice> pairedDev;
-    private ArrayList<String> listPairedDevices;
-    //private ListView lvPairedDevices;
-    // private ArrayAdapter adapter;
+   /// private int REQUEST_CODE = 1;
+   /// private Set<BluetoothDevice> pairedDev;
+   /// private ArrayList<String> listPairedDevices;
     private Button btnDeviceSearch;
-    private BroadcastReceiver receiver = new BroadcastReceiver() {
+
+    /*private BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
@@ -50,7 +41,7 @@ public class DeviceSearchActivity extends AppCompatActivity {
         }
     };
 
-    BluetoothAdapter mBlueAdapter;
+    BluetoothAdapter mBlueAdapter; */
 
 
     @Override
@@ -60,7 +51,7 @@ public class DeviceSearchActivity extends AppCompatActivity {
         btnDeviceSearch = findViewById(R.id.btnDeviceSearch);
         //lvPairedDevices = findViewById(R.id.lvPairedDevices);
 
-        mBlueAdapter = BluetoothAdapter.getDefaultAdapter();
+        /*mBlueAdapter = BluetoothAdapter.getDefaultAdapter();
         if (mBlueAdapter == null) {
             showToast("Bluetooth недоустпен");
         } else {
@@ -68,13 +59,15 @@ public class DeviceSearchActivity extends AppCompatActivity {
                 Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                 startActivityForResult(intent, REQUEST_CODE);
             }
-        }
+        }*/
 
 
         btnDeviceSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pairedDev = mBlueAdapter.getBondedDevices();
+                Intent intent = new Intent(DeviceSearchActivity.this, DeviceScanActivity.class);
+                startActivity(intent);
+                /*pairedDev = mBlueAdapter.getBondedDevices();
                 listPairedDevices = new ArrayList<>();
                 int count = pairedDev.size();
                 if (count > 0) {
@@ -83,31 +76,28 @@ public class DeviceSearchActivity extends AppCompatActivity {
                         String devAddress = device.getAddress();
                         //listPairedDevices.add(devName + " : " + devAddress);
                     }
-                }
+                }*/
 
-
-
-                if (mBlueAdapter.isDiscovering()) {
+                /*if (mBlueAdapter.isDiscovering()) {
                     mBlueAdapter.cancelDiscovery();
                 }
-
 
                 IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
                 registerReceiver(receiver, filter);
 
-                mBlueAdapter.startDiscovery();
+                mBlueAdapter.startDiscovery();*/
 
-                Bundle bundle = new Bundle();
+                /*Bundle bundle = new Bundle();
                 bundle.putStringArrayList("pairs", listPairedDevices);
                 Intent intent = new Intent(DeviceSearchActivity.this, PairedDevicesActivity.class);
                 intent.putExtras(bundle);
-                startActivity(intent);
+                startActivity(intent);*/
             }
         });
     }
 
 
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    /*public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -122,10 +112,10 @@ public class DeviceSearchActivity extends AppCompatActivity {
                 showToast("Bluetooth off");
             }
         }
-    }
+    }*/
 
 
-    @Override
+    /*@Override
     protected void onResume() {
         super.onResume();
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
@@ -147,14 +137,13 @@ public class DeviceSearchActivity extends AppCompatActivity {
         }
     }
 
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(receiver);
-    }
+    }*/
 
-    private void showToast(String msg) {
+    /*private void showToast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-    }
+    }*/
 }
