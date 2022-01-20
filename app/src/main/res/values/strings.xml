@@ -51,5 +51,7 @@
     <string name="no_vin">VIN не задан</string>
     <string name="vin">VIN</string>
     <string name="bluetooth_devices_list">Список bluetooth устройств</string>
+    <string name="stock">Биржа</string>
+    <string name="offers">Предложения</string>
 
 </resources>

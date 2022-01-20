@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.example.autodata.R;
 import android.example.autodata.car.AutoActivity;
+import android.example.autodata.offers.OffersActivity;
+import android.example.autodata.stock.StockActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -43,6 +45,13 @@ public class SettingsActivity extends AppCompatActivity {
                         //offer.setVisibility(View.GONE);
                         //settings.setVisibility(View.VISIBLE);
                         break;
+                    case R.id.action_stock:
+                        Intent stockIntent = new Intent(getApplicationContext(), StockActivity.class);
+                        startActivity(stockIntent);
+                        break;
+                    case R.id.action_offers:
+                        Intent offerIntent = new Intent(getApplicationContext(), OffersActivity.class);
+                        startActivity(offerIntent);
                 }
                 return false;
             }
