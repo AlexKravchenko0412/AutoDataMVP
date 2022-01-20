@@ -27,6 +27,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AutoData">
         <activity
+            android:name=".offers.OffersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".stock.StockActivity"
+            android:exported="false" />
+        <activity
             android:name=".settings.DeviceScanActivity"
             android:exported="false" />
         <activity
@@ -46,9 +52,6 @@
             android:exported="false" />
         <activity
             android:name=".car.AutoActivity"
-            android:exported="true" />
-        <activity
-            android:name=".stock.StockActivity"
             android:exported="true" />
         <activity
             android:name=".settings.SettingsActivity"

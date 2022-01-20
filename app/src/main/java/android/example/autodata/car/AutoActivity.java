@@ -6,11 +6,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.example.autodata.OfferActivity;
 import android.example.autodata.R;
 import android.example.autodata.car.datasets.DataSetActivity;
-import android.example.autodata.stock.StockActivity;
+import android.example.autodata.offers.OffersActivity;
 import android.example.autodata.settings.SettingsActivity;
+import android.example.autodata.stock.StockActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -76,7 +76,7 @@ public class AutoActivity extends AppCompatActivity {
                         startActivity(stockIntent);
                         break;
                     case R.id.action_offers:
-                        Intent offerIntent = new Intent(getApplicationContext(), OfferActivity.class);
+                        Intent offerIntent = new Intent(getApplicationContext(), OffersActivity.class);
                         startActivity(offerIntent);
                 }
                 return false;
