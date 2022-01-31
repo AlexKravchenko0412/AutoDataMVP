@@ -27,6 +27,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AutoData">
         <activity
+            android:name=".settings.bluetooth.BtConnectionActivity"
+            android:exported="false" />
+        <activity
             android:name=".offers.OffersActivity"
             android:exported="false" />
         <activity

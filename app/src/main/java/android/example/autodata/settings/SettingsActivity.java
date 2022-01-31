@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.example.autodata.R;
 import android.example.autodata.car.AutoActivity;
 import android.example.autodata.offers.OffersActivity;
+import android.example.autodata.settings.bluetooth.BtConnectionActivity;
 import android.example.autodata.stock.StockActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -61,7 +62,8 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Intent intent = new Intent(SettingsActivity.this, DeviceSearchActivity.class);
-                Intent intent = new Intent(SettingsActivity.this, DeviceSearchActivity.class);
+                //Intent intent = new Intent(SettingsActivity.this, DeviceSearchActivity.class);
+                Intent intent = new Intent(SettingsActivity.this, BtConnectionActivity.class);
                 startActivity(intent);
             }
         });
