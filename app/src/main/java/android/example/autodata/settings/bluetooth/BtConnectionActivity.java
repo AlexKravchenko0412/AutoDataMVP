@@ -200,6 +200,7 @@ public class BtConnectionActivity extends AppCompatActivity implements AdapterVi
 
 
     public void btnDiscover(View view) {
+        Log.d(TAG, "btnDiscover: Looking for unpaired devices.");
         if (bluetoothAdapter.isDiscovering()) {
             bluetoothAdapter.cancelDiscovery();
 
