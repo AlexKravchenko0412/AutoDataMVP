@@ -14,13 +14,16 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.UUID;
 
-public class BtConnectionActivity extends AppCompatActivity {
+public class BtConnectionActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private static final String TAG = "MainActivity";
 
@@ -28,9 +31,12 @@ public class BtConnectionActivity extends AppCompatActivity {
     Button btnEnableDisable_Discoverable;
 
     BluetoothConnectionService bluetoothConnection;
+    BluetoothDevice bluetoothDevice;
 
     Button btnStartConnection;
     Button btnSend;
+
+    private static final UUID UUID_INSECURE = UUID.fromString("680cc08e-21a9-49b1-a7a9-7f3b5f2cc84c");
 
     EditText etSend;
 
@@ -92,16 +98,37 @@ public class BtConnectionActivity extends AppCompatActivity {
             }
         }
     };
-        //receiver for listening devices that are not yet paired
+    //receiver for listening devices that are not yet paired
     private final BroadcastReceiver broadcastReceiver3 = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             final String action = intent.getAction();
-            if(action.equals(BluetoothDevice.ACTION_FOUND)) {
+            if (action.equals(BluetoothDevice.ACTION_FOUND)) {
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
                 bltDevices.add(device);
-                deviceListAdapter = new DeviceListAdapter(context,R.layout.device_adapter_view,bltDevices);
+                deviceListAdapter = new DeviceListAdapter(context, R.layout.device_adapter_view, bltDevices);
                 lvNewDevices.setAdapter(deviceListAdapter);
+            }
+        }
+    };
+
+
+    private final BroadcastReceiver broadcastReceiver4 = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            final String action = intent.getAction();
+            if(action.equals(BluetoothDevice.ACTION_BOND_STATE_CHANGED)) {
+                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                if(device.getBondState() == BluetoothDevice.BOND_BONDED) {
+                    Log.d(TAG, "BroadcastReceiver: BOND_BONDED");
+                    bluetoothDevice = device;
+                }
+                if(device.getBondState() == BluetoothDevice.BOND_BONDING) {
+                    Log.d(TAG, "BroadcastReceiver: BOND_BONDING");
+                }
+                if(device.getBondState() == BluetoothDevice.BOND_NONE){
+                    Log.d(TAG, "BroadcastReceiver: BOND_NONE");
+                }
             }
         }
     };
@@ -111,6 +138,9 @@ public class BtConnectionActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(broadcastReceiver1);
+        unregisterReceiver(broadcastReceiver2);
+        unregisterReceiver(broadcastReceiver3);
+        unregisterReceiver(broadcastReceiver4);
     }
 
     @Override
@@ -121,9 +151,18 @@ public class BtConnectionActivity extends AppCompatActivity {
         btnEnableDisable_Discoverable = findViewById(R.id.btnDiscoverable_on_off);
         lvNewDevices = findViewById(R.id.lvNewDevices);
         bltDevices = new ArrayList<>();
+        etSend = findViewById(R.id.editText);
+        btnStartConnection = findViewById(R.id.btnStartConnection);
+        btnSend = findViewById(R.id.btnSend);
 
+        //broadcasts when bond state changes (pairing)
+        IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
+        registerReceiver(broadcastReceiver4, filter);
 
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+
+
+        lvNewDevices.setOnItemClickListener(BtConnectionActivity.this);
 
         btnONOFF.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,10 +170,37 @@ public class BtConnectionActivity extends AppCompatActivity {
                 enableDisableBT();
             }
         });
+
+        btnStartConnection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startConnection();
+            }
+        });
+
+        btnSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                byte[] bytes = etSend.getText().toString().getBytes(Charset.defaultCharset());
+                bluetoothConnection.write(bytes);
+            }
+        });
     }
 
+
+    public void startConnection() {
+        startBTConnection(bluetoothDevice, UUID_INSECURE);
+    }
+
+    public void startBTConnection(BluetoothDevice device, UUID uuid) {
+        Log.d(TAG, "startBTConnection: Initializing RFCOM Bluetooth Connection.");
+
+        bluetoothConnection.startClient(device, uuid);
+    }
+
+
     public void btnDiscover(View view) {
-        if(bluetoothAdapter.isDiscovering()) {
+        if (bluetoothAdapter.isDiscovering()) {
             bluetoothAdapter.cancelDiscovery();
 
             checkBTPermission();
@@ -143,15 +209,15 @@ public class BtConnectionActivity extends AppCompatActivity {
             IntentFilter discoverDevicesIntent = new IntentFilter(BluetoothDevice.ACTION_FOUND);
             registerReceiver(broadcastReceiver3, discoverDevicesIntent);
         }
-        if(!bluetoothAdapter.isDiscovering()) {
+        if (!bluetoothAdapter.isDiscovering()) {
             checkBTPermission();
             IntentFilter discoverDevicesIntent = new IntentFilter(BluetoothDevice.ACTION_FOUND);
             registerReceiver(broadcastReceiver3, discoverDevicesIntent);
         }
     }
 
-    private void checkBTPermission(){
-        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP){
+    private void checkBTPermission() {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
             int permissionCheck = 0;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 permissionCheck = this.checkSelfPermission("Manifest.permission.ACCESS_FINE_LOCATION");
@@ -165,7 +231,7 @@ public class BtConnectionActivity extends AppCompatActivity {
                     this.requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1001); //Any number
                 }
             }
-        }else{
+        } else {
             Log.d(TAG, "checkBTPermissions: No need to check permissions. SDK version < LOLLIPOP.");
         }
     }
@@ -201,4 +267,24 @@ public class BtConnectionActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        bluetoothAdapter.cancelDiscovery();
+
+        Log.d(TAG," OnItemClick: You clicked on a device");
+        String deviceName = bltDevices.get(position).getName();
+        String deviceAddress = bltDevices.get(position).getAddress();
+
+        Log.d(TAG, "onItemClick: deviceName = " + deviceName);
+        Log.d(TAG, "onItemClick: deviceAddress = " + deviceAddress);
+
+        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN_MR2) {
+            Log.d(TAG, "Trying to pair with " + deviceName);
+            bltDevices.get(position).createBond();
+
+            bluetoothDevice = bltDevices.get(position);
+            bluetoothConnection = new BluetoothConnectionService(BtConnectionActivity.this);
+        }
+
+    }
 }

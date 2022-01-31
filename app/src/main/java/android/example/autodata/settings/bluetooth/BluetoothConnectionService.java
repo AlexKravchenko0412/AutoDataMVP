@@ -35,6 +35,7 @@ public class BluetoothConnectionService
     public BluetoothConnectionService(Context context) {
         this.context = context;
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        start();
     }
 
     //Thread waiting for the connection
@@ -164,7 +165,13 @@ public class BluetoothConnectionService
             InputStream tmpIn = null;
             OutputStream tmpOut = null;
 
-            progressDialog.dismiss();
+            try {
+                progressDialog.dismiss();
+            } catch(NullPointerException e) {
+                e.printStackTrace();
+            }
+
+
 
             try {
                 tmpIn = socket.getInputStream();
