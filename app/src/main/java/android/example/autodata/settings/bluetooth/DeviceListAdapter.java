@@ -1,5 +1,6 @@
 package android.example.autodata.settings.bluetooth;
 
+import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.example.autodata.R;
@@ -9,40 +10,42 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-
 import java.util.ArrayList;
+
 
 public class DeviceListAdapter extends ArrayAdapter<BluetoothDevice> {
 
-    private LayoutInflater layoutInflater;
-    private ArrayList<BluetoothDevice> devices;
-    private int viewResourceId;
+    private LayoutInflater mLayoutInflater;
+    private ArrayList<BluetoothDevice> mDevices;
+    private int  mViewResourceId;
 
-
-    public DeviceListAdapter(Context context, int resource, ArrayList<BluetoothDevice> devices) {
-        super(context, resource, devices);
-        this.devices = devices;
-        this.viewResourceId = resource;
-        layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    public DeviceListAdapter(Context context, int tvResourceId, ArrayList<BluetoothDevice> devices){
+        super(context, tvResourceId,devices);
+        this.mDevices = devices;
+        mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        mViewResourceId = tvResourceId;
     }
 
+    @SuppressLint("MissingPermission")
     public View getView(int position, View convertView, ViewGroup parent) {
-        convertView = layoutInflater.inflate(viewResourceId, null);
-        BluetoothDevice bluetoothDevice = devices.get(position);
+        convertView = mLayoutInflater.inflate(mViewResourceId, null);
 
-        if (bluetoothDevice != null) {
+        BluetoothDevice device = mDevices.get(position);
+
+        if (device != null) {
             TextView deviceName = (TextView) convertView.findViewById(R.id.tvDeviceName);
-            TextView deviceAdress = (TextView) convertView.findViewById(R.id.tvDeviceAddress);
+            TextView deviceAddress = (TextView) convertView.findViewById(R.id.tvDeviceAddress);
 
             if (deviceName != null) {
-                deviceName.setText(bluetoothDevice.getName());
+                deviceName.setText(device.getName());
             }
-            if (deviceAdress != null) {
-                deviceAdress.setText(bluetoothDevice.getAddress());
+            if (deviceAddress != null) {
+                deviceAddress.setText(device.getAddress());
             }
         }
 
         return convertView;
     }
+
 }
+
